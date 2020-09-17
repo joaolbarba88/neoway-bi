@@ -5,6 +5,7 @@ CALL vPathArchive;
 fato_empresacalc:
 LOAD CNPJ AS [CNPJ], 
      COD_LOCALIDADE AS [Código Localidade], 
+     COD_RAMO_ATIVIDADE AS [Código Ramo de Atividade],
      COD_NATUREZA_JURIDICA AS [Código Natureza Jurídica],  
      LATITUDE AS [Latitude], 
      LONGITUDE AS [Longitude], 
@@ -20,20 +21,19 @@ LOAD CNPJ AS [CNPJ],
      FAIXA_VEICULOS AS [Faixa Veículos],
      POSSUI_VEICULOS_ANTT AS [Possui Veículos ANTT]
 FROM [$(vPathDataTransformed)/fato_empresacalc.qvd] (qvd);
-
 STORE fato_empresacalc INTO [$(vPathStorePbi)/fato_empresacalc.csv] (txt, delimiter is ';');
+DROP TABLE fato_empresacalc;
 
-
-dim_empresas:
+dim_empresa:
 LOAD CNPJ AS [CNPJ], 
      RAZAO_SOCIAL AS [Razão Social], 
      FLAG_MATRIZ AS [Flag Matriz], 
      DATA_ABERTURA AS [Data Abertura], 
      NUMERO_ENDERECO AS [Número Endereço], 
      SITUACAO AS [Situação]
-FROM [$(vPathDataTransformed)/dim_empresas.qvd] (qvd);
-
-STORE dim_empresas INTO [$(vPathStorePbi)/dim_empresas.csv] (txt, delimiter is ';');
+FROM [$(vPathDataTransformed)/dim_empresa.qvd] (qvd);
+STORE dim_empresa INTO [$(vPathStorePbi)/dim_empresa.csv] (txt, delimiter is ';');
+DROP TABLE dim_empresa;
 
 
 dim_localidade:
@@ -43,16 +43,16 @@ LOAD COD_LOCALIDADE AS [Código Localidade],
      MUNICIPIO AS [Município], 
      UF AS [UF]
 FROM [$(vPathDataTransformed)/dim_localidade.qvd] (qvd);
-
-STORE dim_localidade INTO [$(vPathStorePbi)/dim_cep.csv] (txt, delimiter is ';');
+STORE dim_localidade INTO [$(vPathStorePbi)/dim_localidade.csv] (txt, delimiter is ';');
+DROP TABLE dim_localidade;
 
 dim_naturezajuridica:
 LOAD COD_NATUREZA_JURIDICA AS [Código Natureza Jurídica], 
      NATUREZA_JURIDICA AS [Natureza Jurídica], 
      CLASSIFICACAO AS [Classificação]
 FROM [$(vPathDataTransformed)/dim_naturezajuridica.qvd](qvd);
-
 STORE dim_naturezajuridica INTO [$(vPathStorePbi)/dim_naturezajuridica.csv] (txt, delimiter is ';');
+DROP TABLE dim_naturezajuridica;
 
 dim_ramoatividade:
 LOAD COD_RAMO_ATIVIDADE AS [Código Ramo de Atividade], 
@@ -70,5 +70,5 @@ LOAD COD_RAMO_ATIVIDADE AS [Código Ramo de Atividade],
      RAMO_ATIVIDADE AS [Ramo de Atividade], 
      DIVISAO AS [Divisão]
 FROM [$(vPathDataTransformed)/dim_ramoatividade.qvd] (qvd);
-
 STORE dim_ramoatividade INTO [$(vPathStorePbi)/dim_ramoatividade.csv] (txt, delimiter is ';');
+DROP TABLE dim_ramoatividade;

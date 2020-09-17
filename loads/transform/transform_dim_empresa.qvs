@@ -1,9 +1,9 @@
 ﻿$(must_include='..\..\config\config.qvs');
 CALL vPathArchive;
 
-dim_empresas:
+dim_empresa:
 LOAD distinct
-	TEXT(REPEAT('0', 14 - LEN('cd_cnpj'))& TEXT('cd_cnpj')) AS CNPJ, 
+    TEXT(REPEAT('0', 14 - LEN("cd_cnpj"))& TEXT("cd_cnpj")) AS CNPJ, 
 	nm_razao_social AS RAZAO_SOCIAL, 
     IF(fl_matriz = 1, 'S', 'N') AS FLAG_MATRIZ,
     DATE(DATE#(TRIM(dt_abertura),'MM/DD/YYYY'), 'DD/MM/YYYY') AS DATA_ABERTURA,
