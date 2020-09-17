@@ -1,0 +1,22 @@
+version: '2'
+services:
+    relacional:
+        image: mysql:5.7
+        container_name: neoway_mysql
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: neoway
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+    mongo:
+        image: tutum/mongodb
+        container_name: neoway_mongo
+        environment:
+            - AUTH=no
+        ports:
+            - "27017:27017"
+
+volumes:
+    db_data:
