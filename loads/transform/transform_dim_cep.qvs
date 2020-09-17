@@ -1,0 +1,13 @@
+﻿$(must_include='..\..\config\config.qvs');
+CALL vPathArchive;
+
+dim_cep:
+LOAD DISTINCT
+	TEXT(cd_cep) AS COD_CEP,
+	nm_logradouro AS LOGRADOURO,
+	nm_bairro AS BAIRRO,
+	nm_municipio AS MUNICIPIO,
+	sg_uf AS UF
+FROM [$(vPathDataMirrors)/empresas.qvd] (qvd);
+
+CALL vStoreFile(vPathDataTransformed, '');

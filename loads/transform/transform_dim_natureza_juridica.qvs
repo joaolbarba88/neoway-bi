@@ -1,0 +1,11 @@
+﻿$(must_include='..\..\config\config.qvs');
+CALL vPathArchive;
+
+dim_natureza_juridica:
+LOAD DISTINCT
+	NUM(cd_natureza_juridica) AS COD_NATUREZA_JURIDICA,
+    de_natureza_juridica AS NATUREZA_JURIDICA, 
+    de_classif_natureza_juridica  AS CLASSIFICACAO
+FROM [$(vPathDataMirrors)/empresas.qvd] (qvd);
+
+CALL vStoreFile(vPathDataTransformed, '');

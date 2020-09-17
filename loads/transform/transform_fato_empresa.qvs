@@ -1,0 +1,56 @@
+﻿$(must_include='..\..\config\config.qvs');
+CALL vPathArchive;
+
+empresa:
+LOAD distinct
+	TEXT(REPEAT('0', 14 - LEN('cd_cnpj'))& TEXT('cd_cnpj')) AS CNPJ, 
+
+	nm_razao_social AS RAZAO_SOCIAL, 
+	TEXT(cd_cep) AS COD_CEP, 
+    IF(fl_matriz = 1, 'S', 'N') AS FLAG_MATRIZ,
+    DATE(DATE#(TRIM(dt_abertura),'MM/DD/YYYY'), 'DD/MM/YYYY') AS DATA_ABERTURA,
+    TEXT(IF(IsNull(nu_logradouro), 'SN', nu_logradouro)) AS NUMERO_ENDERECO, 
+    NUM(cd_natureza_juridica) AS COD_NATUREZA_JURIDICA, 
+    TEXT(de_situacao) AS SITUACAO
+FROM [$(vPathDataMirrors)/empresas.qvd] (qvd);
+LEFT JOIN (empresa)
+LOAD distinct
+	TEXT(REPEAT('0', 14 - LEN(cd_cnpj))& TEXT(cd_cnpj)) AS CNPJ, 
+	vl_latitude AS LATITUDE, 
+	vl_longitude AS LONGITUDE,
+	IF(LEN(TRIM(vl_total_veiculos_antt)) = 0 OR vl_total_veiculos_antt = 'NULL' OR vl_total_veiculos_antt = '-', 0, NUM(vl_total_veiculos_antt)) AS QTD_VEICULOS_ANTT,
+	IF(LEN(TRIM(vl_total_veiculos_leves)) = 0 OR vl_total_veiculos_leves = 'NULL' OR vl_total_veiculos_leves = '-', 0, NUM(vl_total_veiculos_leves)) AS QTD_VEICULOS_LEVES, 
+	IF(LEN(TRIM(vl_total_veiculos_pesados)) = 0 OR vl_total_veiculos_pesados = 'NULL' OR vl_total_veiculos_pesados = '-', 0, NUM(vl_total_veiculos_pesados)) AS QTD_VEICULOS_PESADOS,
+	IF(LEN(TRIM(qt_filial)) = 0 OR qt_filial = 'NULL' OR qt_filial = '-', 0, qt_filial) AS QTD_FILIAIS,
+	IF(fl_optante_simei = '1', 'S', 'N') AS OPTANTE_SIMEI,
+	IF(fl_optante_simples = '1', 'S', 'N') AS OPTANTE_SIMPLES, 
+	IF(LEN(TRIM(de_saude_tributaria)) = 0, 'CINZA', de_saude_tributaria) AS SAUDE_TRIBUTARIA, 
+	IF(LEN(TRIM(de_nivel_atividade)) = 0, 'NA', de_nivel_atividade) AS NIVEL_ATIVIDADE
+FROM [$(vPathDataMirrors)/empresasCalc.qvd] (qvd);
+
+// Adicionando campo QTD_TOTAL_VEICULOS
+empresa2:
+NoConcatenate
+LOAD 
+	*,
+	NUM(QTD_VEICULOS_LEVES) + NUM(QTD_VEICULOS_PESADOS) AS QTD_TOTAL_VEICULOS
+RESIDENT empresa;
+
+DROP TABLE empresa;
+
+fato_empresa:
+NoConcatenate
+LOAD
+	*,
+	IF(QTD_TOTAL_VEICULOS <= 5, '0 a 5', 
+		IF(QTD_TOTAL_VEICULOS <= 10, '6 a 10',
+			IF(QTD_TOTAL_VEICULOS <= 15, '11 a 15',
+				IF(QTD_TOTAL_VEICULOS <= 30, '16 a 30',
+					IF(QTD_TOTAL_VEICULOS <= 50, '31 a 50',
+						'> 50'))))) AS FAIXA_VEICULOS
+RESIDENT empresa2;
+
+DROP TABLE empresa2;
+
+
+CALL vStoreFile(vPathDataTransformed, '');
