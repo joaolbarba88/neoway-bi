@@ -1,0 +1,20 @@
+﻿$(must_include='..\..\config\config.qvs');
+
+CALL vPathArchive;
+
+empresasCalc:
+LOAD cd_cnpj, 
+     vl_latitude, 
+     vl_longitude, 
+     vl_total_veiculos_antt, 
+     vl_total_veiculos_leves, 
+     vl_total_veiculos_pesados, 
+     fl_optante_simples, 
+     qt_filial, 
+     fl_optante_simei, 
+     de_saude_tributaria, 
+     de_nivel_atividade
+FROM [$(vPathSpreadSheets)empresasCalc.csv]
+(txt, utf8, embedded labels, delimiter is ';', msq);
+
+CALL vStoreFile(vPathDataMirrors, '');
