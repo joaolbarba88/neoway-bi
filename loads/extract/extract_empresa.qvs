@@ -1,0 +1,12 @@
+﻿$(must_include='..\..\config\config.qvs');
+
+CALL vPathArchive;
+
+ODBC CONNECT TO neoway_mysql;
+
+empresas:
+LOAD *;
+
+SQL SELECT * FROM neoway.empresas;
+
+CALL vStoreFile(vPathDataMirrors, '');

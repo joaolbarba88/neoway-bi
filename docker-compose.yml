@@ -11,7 +11,7 @@ services:
             MYSQL_USER: root
             MYSQL_PASSWORD: root
     mongo:
-        image: tutum/mongodb
+        image: mongo:latest
         container_name: neoway_mongo
         environment:
             - AUTH=no
