@@ -1,0 +1,13 @@
+﻿$(must_include='..\..\config\config.qvs');
+
+CALL vPathArchive;
+
+cnae:
+LOAD cd_cnpj, 
+     nu_ordem, 
+     cd_ramo_atividade, 
+     de_ramo_atividade
+FROM [$(vPathSpreadSheets)CNAE.csv]
+(txt, utf8, embedded labels, delimiter is ';', msq);
+
+CALL vStoreFile(vPathDataMirrors, '',);
