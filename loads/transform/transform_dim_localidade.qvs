@@ -1,9 +1,9 @@
 ﻿$(must_include='..\..\config\config.qvs');
 CALL vPathArchive;
 
-dim_cep:
+dim_localidade:
 LOAD DISTINCT
-	TEXT(cd_cep) AS COD_CEP,
+	TEXT(cd_cep) AS COD_LOCALIDADE,
 	nm_logradouro AS LOGRADOURO,
 	nm_bairro AS BAIRRO,
 	nm_municipio AS MUNICIPIO,

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
  <QvdTableHeader>
    <QvBuildNo>50624</QvBuildNo>
-   <CreatorDoc>D:\containers\neoway\teste_bi\loads\transform\transform_dim_ramo_atividade.qvw</CreatorDoc>
-   <CreateUtcTime>2020-09-17 18:00:55</CreateUtcTime>
+   <CreatorDoc>D:\containers\neoway\teste_bi\loads\transform\transform_dim_ramoatividade.qvw</CreatorDoc>
+   <CreateUtcTime>2020-09-17 19:15:22</CreateUtcTime>
    <SourceCreateUtcTime></SourceCreateUtcTime>
    <SourceFileUtcTime></SourceFileUtcTime>
    <SourceFileSize>-1</SourceFileSize>
    <StaleUtcTime></StaleUtcTime>
-   <TableName>dim_ramo_atividade</TableName>
+   <TableName>dim_ramoatividade</TableName>
    <Fields>
      <QvdFieldHeader>
        <FieldName>COD_RAMO_ATIVIDADE</FieldName>

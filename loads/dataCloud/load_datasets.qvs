@@ -1,0 +1,72 @@
+﻿$(must_include='..\..\config\config.qvs');
+CALL vPathArchive;
+
+fato_empresa:
+LOAD CNPJ AS [CNPJ], 
+     RAZAO_SOCIAL AS [Razão Social], 
+     COD_CEP AS [Código CEP], 
+     FLAG_MATRIZ AS [Flag Matriz], 
+     DATA_ABERTURA AS [Data Abertura], 
+     NUMERO_ENDERECO AS [Número Endereço], 
+     COD_NATUREZA_JURIDICA AS [Código Natureza Jurídica],  
+     SITUACAO AS [Situação], 
+     LATITUDE AS [Latitude], 
+     LONGITUDE AS [Longitude], 
+     QTD_VEICULOS_ANTT AS [Qtd. Veículos ANTT], 
+     QTD_VEICULOS_LEVES AS [Qtd. Veículos Leves], 
+     QTD_VEICULOS_PESADOS AS [Qtd. Veículos Pesados], 
+     QTD_TOTAL_VEICULOS AS [Qtd. Total Veículos],
+     QTD_FILIAIS AS [Qtd. Filiais], 
+     OPTANTE_SIMEI AS [Optante SIMEI], 
+     OPTANTE_SIMPLES AS [Optante Simples], 
+     SAUDE_TRIBUTARIA AS [Saúde Tributária], 
+     NIVEL_ATIVIDADE AS [Nível Atividade], 
+     FAIXA_VEICULOS AS [Faixa Veículos],
+     POSSUI_VEICULOS_ANTT AS [Possui Veículos ANTT]
+FROM [$(vPathDataTransformed)/fato_empresa.qvd] (qvd);
+
+STORE fato_empresa INTO [$(vPathStorePbi)/fato_empresa.csv] (txt, delimiter is ';');
+
+dim_cep:
+LOAD COD_CEP AS [Código CEP], 
+     LOGRADOURO AS [Logradouro], 
+     BAIRRO AS [Bairro], 
+     MUNICIPIO AS [Município], 
+     UF AS [UF]
+FROM [$(vPathDataTransformed)/dim_cep.qvd] (qvd);
+
+STORE dim_cep INTO [$(vPathStorePbi)/dim_cep.csv] (txt, delimiter is ';');
+
+dim_natureza_juridica:
+LOAD COD_NATUREZA_JURIDICA AS [Código Natureza Jurídica], 
+     NATUREZA_JURIDICA AS [Natureza Jurídica], 
+     CLASSIFICACAO AS [Classificação]
+FROM [$(vPathDataTransformed)/dim_natureza_juridica.qvd](qvd);
+
+STORE dim_natureza_juridica INTO [$(vPathStorePbi)/dim_natureza_juridica.csv] (txt, delimiter is ';');
+
+dim_ramo_atividade:
+LOAD COD_RAMO_ATIVIDADE AS [Código Ramo de Atividade], 
+     ORDEM AS [Ordem Ramo de Atividade], 
+     COD_RAMO_ATIVIDADE_N1 AS [Código Ramo de Atividade - Nível 1], 
+     COD_RAMO_ATIVIDADE_N2 AS [Código Ramo de Atividade - Nível 2], 
+     COD_RAMO_ATIVIDADE_N3 AS [Código Ramo de Atividade - Nível 3], 
+     COD_RAMO_ATIVIDADE_N4 AS [Código Ramo de Atividade - Nível 4],  
+     COD_RAMO_ATIVIDADE_N5 AS [Código Ramo de Atividade - Nível 5], 
+     RAMO_ATIVIDADE_N1 AS [Ramo de Atividade - Nível 1],  
+     RAMO_ATIVIDADE_N2 AS [Ramo de Atividade - Nível 2],  
+     RAMO_ATIVIDADE_N3 AS [Ramo de Atividade - Nível 3],  
+     RAMO_ATIVIDADE_N4 AS [Ramo de Atividade - Nível 4],  
+     RAMO_ATIVIDADE_N5 AS [Ramo de Atividade - Nível 5],  
+     RAMO_ATIVIDADE AS [Ramo de Atividade], 
+     DIVISAO AS [Divisão]
+FROM [$(vPathDataTransformed)/dim_ramo_atividade.qvd] (qvd);
+
+STORE dim_ramo_atividade INTO [$(vPathStorePbi)/dim_ramo_atividade.csv] (txt, delimiter is ';');
+
+lnk_empresa_ramo_atividade:
+LOAD CNPJ AS [CNPJ], 
+     COD_RAMO_ATIVIDADE AS [Código Ramo de Atividade]
+FROM [$(vPathDataTransformed)/lnk_empresa_ramo_atividade.qvd] (qvd);
+
+STORE lnk_empresa_ramo_atividade INTO [$(vPathStorePbi)/lnk_empresa_ramo_atividade.csv] (txt, delimiter is ';');

@@ -21,7 +21,7 @@ SET CollationLocale='pt-BR';
 	DESCRIPTION - Função para obter as variáveis de path dos Arquivos Gerais utilizados
 */
 Sub vPathArchive
-
+	
 	SET vPathDataMirrors = '..\..\files\dataMirrors\';
 	SET vPathDataTransformed = '..\..\files\dataTransformed\';
 	SET vPathSpreadSheets = '..\..\files\spreadsheets\';
@@ -66,3 +66,19 @@ Sub vStoreFile(vPath, vClient, vType, vTypeProperties);
 	SET ErrorMode =1;
 
 End Sub
+
+
+/*
+  17/09/2020
+  Desenvolvido por: Fabio Seidl
+  Função para reduzir o tamanho de arquivos QVD temporários, excluindo seus dados.
+  Uso:
+    CALL LimparQVD('[$(vLocalDirDadoTemporario)/T_TABELA.qvd]');
+*/
+SUB LimparQVD(vFile)
+    NULL_TABLE:
+    LOAD * INLINE [NULL];
+    TRACE  Limpando: $(vFile);
+    STORE NULL_TABLE INTO $(vFile) (qvd);
+    DROP TABLE NULL_TABLE;
+END SUB

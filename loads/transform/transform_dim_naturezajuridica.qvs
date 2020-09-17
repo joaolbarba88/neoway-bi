@@ -1,7 +1,7 @@
 ﻿$(must_include='..\..\config\config.qvs');
 CALL vPathArchive;
 
-dim_natureza_juridica:
+dim_naturezajuridica:
 LOAD DISTINCT
 	NUM(cd_natureza_juridica) AS COD_NATUREZA_JURIDICA,
     de_natureza_juridica AS NATUREZA_JURIDICA, 
