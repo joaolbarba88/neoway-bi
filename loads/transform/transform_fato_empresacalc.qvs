@@ -4,7 +4,7 @@ CALL vPathArchive;
 empresa:
 LOAD distinct
 	TEXT(REPEAT('0', 14 - LEN('cd_cnpj'))& TEXT('cd_cnpj')) AS CNPJ, 
-	TEXT(cd_cep) AS COD_MUNICIPIO, 
+	TEXT(cd_cep) AS COD_LOCALIDADE, 
     NUM(cd_natureza_juridica) AS COD_NATUREZA_JURIDICA
 FROM [$(vPathDataMirrors)/empresas.qvd] (qvd);
 LEFT JOIN (empresa)
@@ -31,7 +31,8 @@ empresa2:
 NoConcatenate
 LOAD 
 	*,
-	NUM(QTD_VEICULOS_LEVES) + NUM(QTD_VEICULOS_PESADOS) AS QTD_TOTAL_VEICULOS
+	NUM(QTD_VEICULOS_LEVES) + NUM(QTD_VEICULOS_PESADOS) AS QTD_TOTAL_VEICULOS,
+	IF(QTD_VEICULOS_ANTT > 0, 'SIM', 'NAO') AS POSSUI_VEICULOS_ANTT
 RESIDENT empresa;
 
 DROP TABLE empresa;

@@ -1,15 +1,11 @@
 ﻿$(must_include='..\..\config\config.qvs');
 CALL vPathArchive;
 
-fato_empresa:
+
+fato_empresacalc:
 LOAD CNPJ AS [CNPJ], 
-     RAZAO_SOCIAL AS [Razão Social], 
-     COD_CEP AS [Código CEP], 
-     FLAG_MATRIZ AS [Flag Matriz], 
-     DATA_ABERTURA AS [Data Abertura], 
-     NUMERO_ENDERECO AS [Número Endereço], 
+     COD_LOCALIDADE AS [Código Localidade], 
      COD_NATUREZA_JURIDICA AS [Código Natureza Jurídica],  
-     SITUACAO AS [Situação], 
      LATITUDE AS [Latitude], 
      LONGITUDE AS [Longitude], 
      QTD_VEICULOS_ANTT AS [Qtd. Veículos ANTT], 
@@ -23,29 +19,42 @@ LOAD CNPJ AS [CNPJ],
      NIVEL_ATIVIDADE AS [Nível Atividade], 
      FAIXA_VEICULOS AS [Faixa Veículos],
      POSSUI_VEICULOS_ANTT AS [Possui Veículos ANTT]
-FROM [$(vPathDataTransformed)/fato_empresa.qvd] (qvd);
+FROM [$(vPathDataTransformed)/fato_empresacalc.qvd] (qvd);
 
-STORE fato_empresa INTO [$(vPathStorePbi)/fato_empresa.csv] (txt, delimiter is ';');
+STORE fato_empresacalc INTO [$(vPathStorePbi)/fato_empresacalc.csv] (txt, delimiter is ';');
 
-dim_cep:
-LOAD COD_CEP AS [Código CEP], 
+
+dim_empresas:
+LOAD CNPJ AS [CNPJ], 
+     RAZAO_SOCIAL AS [Razão Social], 
+     FLAG_MATRIZ AS [Flag Matriz], 
+     DATA_ABERTURA AS [Data Abertura], 
+     NUMERO_ENDERECO AS [Número Endereço], 
+     SITUACAO AS [Situação]
+FROM [$(vPathDataTransformed)/dim_empresas.qvd] (qvd);
+
+STORE dim_empresas INTO [$(vPathStorePbi)/dim_empresas.csv] (txt, delimiter is ';');
+
+
+dim_localidade:
+LOAD COD_LOCALIDADE AS [Código Localidade], 
      LOGRADOURO AS [Logradouro], 
      BAIRRO AS [Bairro], 
      MUNICIPIO AS [Município], 
      UF AS [UF]
-FROM [$(vPathDataTransformed)/dim_cep.qvd] (qvd);
+FROM [$(vPathDataTransformed)/dim_localidade.qvd] (qvd);
 
-STORE dim_cep INTO [$(vPathStorePbi)/dim_cep.csv] (txt, delimiter is ';');
+STORE dim_localidade INTO [$(vPathStorePbi)/dim_cep.csv] (txt, delimiter is ';');
 
-dim_natureza_juridica:
+dim_naturezajuridica:
 LOAD COD_NATUREZA_JURIDICA AS [Código Natureza Jurídica], 
      NATUREZA_JURIDICA AS [Natureza Jurídica], 
      CLASSIFICACAO AS [Classificação]
-FROM [$(vPathDataTransformed)/dim_natureza_juridica.qvd](qvd);
+FROM [$(vPathDataTransformed)/dim_naturezajuridica.qvd](qvd);
 
-STORE dim_natureza_juridica INTO [$(vPathStorePbi)/dim_natureza_juridica.csv] (txt, delimiter is ';');
+STORE dim_naturezajuridica INTO [$(vPathStorePbi)/dim_naturezajuridica.csv] (txt, delimiter is ';');
 
-dim_ramo_atividade:
+dim_ramoatividade:
 LOAD COD_RAMO_ATIVIDADE AS [Código Ramo de Atividade], 
      ORDEM AS [Ordem Ramo de Atividade], 
      COD_RAMO_ATIVIDADE_N1 AS [Código Ramo de Atividade - Nível 1], 
@@ -60,13 +69,6 @@ LOAD COD_RAMO_ATIVIDADE AS [Código Ramo de Atividade],
      RAMO_ATIVIDADE_N5 AS [Ramo de Atividade - Nível 5],  
      RAMO_ATIVIDADE AS [Ramo de Atividade], 
      DIVISAO AS [Divisão]
-FROM [$(vPathDataTransformed)/dim_ramo_atividade.qvd] (qvd);
+FROM [$(vPathDataTransformed)/dim_ramoatividade.qvd] (qvd);
 
-STORE dim_ramo_atividade INTO [$(vPathStorePbi)/dim_ramo_atividade.csv] (txt, delimiter is ';');
-
-lnk_empresa_ramo_atividade:
-LOAD CNPJ AS [CNPJ], 
-     COD_RAMO_ATIVIDADE AS [Código Ramo de Atividade]
-FROM [$(vPathDataTransformed)/lnk_empresa_ramo_atividade.qvd] (qvd);
-
-STORE lnk_empresa_ramo_atividade INTO [$(vPathStorePbi)/lnk_empresa_ramo_atividade.csv] (txt, delimiter is ';');
+STORE dim_ramoatividade INTO [$(vPathStorePbi)/dim_ramoatividade.csv] (txt, delimiter is ';');
