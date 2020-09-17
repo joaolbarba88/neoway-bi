@@ -1,0 +1,13 @@
+﻿$(must_include='..\..\config\config.qvs');
+
+CALL vPathArchive;
+
+ODBC CONNECT TO neoway_mongo;
+
+setores_ramos_atividade:
+LOAD *;
+
+SQL SELECT *
+FROM neoway."setores_ramos_atividade";
+
+CALL vStoreFile(vPathDataMirrors, '');
