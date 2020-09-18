@@ -1,3 +1,27 @@
+## Checklist de Requisitos
+
+PBI;QLIK;REQUISITO
+OK;OK;Total Geral de empresas;
+OK;OK;Total de empresas matrizes;
+OK;OK;Total de empresas filiais;
+OK;OK;Total de empresas optantes pelo simples e simei;
+OK;OK;Total de empresas públicas;
+OK;OK;Total de empresas privadas;
+OK;OK;Total de empresas ativas;
+OK;OK;Total de empresas baixadas;
+OK;OK;Total de empresas mistas;
+OK;OK;Empresas por UF -> Município (Drilldown);
+OK;OK;Empresas em um gráfico de mapa;
+OK;OK;Empresas por faixa de veículos (leves + pesados) -> 0 a 5, 6 a 10, 11 a 15, 16 a 30, 31 a 50, > 50;
+OK;OK;Filtro de empresas com veículos registrados na antt;
+OK;OK;Filtro de empresas optantes pelo simples (sim e não);
+OK;OK;Filtro de empresas optantes pelo simei (sim e não);
+OK;OK;Empresas por nível e atividade;
+OK;OK;Empresas por data de abertura;
+OK;OK;Empresas por Ramos de Atividade (do arquivo Setores e Ramos de Atividade);
+OK;OK;Empresas por CNAE Principal (tabela, onde CNAE principal tem número de ordem = 0)
+
+
 Teste de Aptidão para a vaga de Analista de Business Intelligence
 ===
 
