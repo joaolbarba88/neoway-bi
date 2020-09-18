@@ -1,6 +1,6 @@
 ## Checklist de Requisitos
 
-# PBI;QLIK;REQUISITO
+### PBI;QLIK;REQUISITO
 - OK;OK;Total Geral de empresas;
 - OK;OK;Total de empresas matrizes;
 - OK;OK;Total de empresas filiais;
