@@ -28,7 +28,6 @@ LOAD
 	
 FROM [$(vPathDataTransformed)/temp_empresa_ramo_atividade.qvd] (qvd);
 
-// Adicionando campo QTD_TOTAL_VEICULOS
 empresa2:
 NoConcatenate
 LOAD 
@@ -37,7 +36,6 @@ LOAD
 	IF(QTD_VEICULOS_ANTT > 0, 'SIM', 'NAO') AS POSSUI_VEICULOS_ANTT,
 	IF(LEN(TRIM(COD_RAMO_ATIVIDADE_tmp)) > 0 OR COD_RAMO_ATIVIDADE_tmp = 'NULL', COD_RAMO_ATIVIDADE_tmp, '0') AS COD_RAMO_ATIVIDADE
 RESIDENT empresa;
-
 DROP TABLE empresa;
 
 fato_empresacalc:

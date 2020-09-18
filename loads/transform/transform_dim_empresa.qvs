@@ -2,7 +2,7 @@
 CALL vPathArchive;
 
 dim_empresa:
-LOAD distinct
+LOAD DISTINCT
     TEXT(REPEAT('0', 14 - LEN("cd_cnpj"))& TEXT("cd_cnpj")) AS CNPJ, 
 	nm_razao_social AS RAZAO_SOCIAL, 
     IF(fl_matriz = 1, 'S', 'N') AS FLAG_MATRIZ,

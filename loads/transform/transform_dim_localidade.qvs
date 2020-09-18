@@ -3,11 +3,11 @@ CALL vPathArchive;
 
 dim_localidade:
 LOAD DISTINCT
-	TEXT(cd_cep) AS COD_LOCALIDADE,
+	IF(LEN(TRIM(TEXT(cd_cep))) = 0 OR cd_cep = 'NULL' , '000000000', TEXT(cd_cep)) AS COD_LOCALIDADE,
 	nm_logradouro AS LOGRADOURO,
 	nm_bairro AS BAIRRO,
-	nm_municipio AS MUNICIPIO,
-	sg_uf AS UF
+	IF(LEN(TRIM(TEXT(nm_municipio))) = 0 OR nm_municipio = 'NULL' , 'Não Informado', TEXT(nm_municipio)) AS MUNICIPIO,
+	IF(LEN(TRIM(TEXT(sg_uf))) = 0 OR sg_uf = 'NULL' , 'Não Informado', TEXT(sg_uf)) AS UF
 FROM [$(vPathDataMirrors)/empresas.qvd] (qvd);
 
 CALL vStoreFile(vPathDataTransformed, '');
