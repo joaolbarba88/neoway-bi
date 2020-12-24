@@ -26,8 +26,7 @@ Empresas por Ramos de Atividade (do arquivo Setores e Ramos de Atividade)|OK|OK
 Empresas por CNAE Principal (tabela, onde CNAE principal tem número de ordem = 0)|OK|OK
 
 
-#Descrição do Teste
-===
+# Descrição do Teste
 
 ## Sumário
 
