@@ -3,8 +3,8 @@ Teste de conhecimentos em Business Intelligence realizado pela Neoway.
 
 ## Requisitos do Teste
 
-Requisitos  | Qlik | Power BI
------------ | ---- | ----
+Requisitos  | Qlik       | Power BI
+----------- | ---------- | ----------
 Total Geral de empresas|OK|OK
 Total de empresas matrizes|OK|OK
 Total de empresas filiais|OK|OK
