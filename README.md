@@ -1,25 +1,29 @@
-## Checklist de Requisitos
+# Teste de Business Intelligence
+Teste de conhecimentos em Business Intelligence realizado pela Neoway.
 
-### PBI;QLIK;REQUISITO
-- OK;OK;Total Geral de empresas;
-- OK;OK;Total de empresas matrizes;
-- OK;OK;Total de empresas filiais;
-- OK;OK;Total de empresas optantes pelo simples e simei;
-- OK;OK;Total de empresas públicas;
-- OK;OK;Total de empresas privadas;
-- OK;OK;Total de empresas ativas;
-- OK;OK;Total de empresas baixadas;
-- OK;OK;Total de empresas mistas;
-- OK;OK;Empresas por UF -> Município (Drilldown);
-- OK;OK;Empresas em um gráfico de mapa;
-- OK;OK;Empresas por faixa de veículos (leves + pesados) -> 0 a 5, 6 a 10, 11 a 15, 16 a 30, 31 a 50, > 50;
-- OK;OK;Filtro de empresas com veículos registrados na antt;
-- OK;OK;Filtro de empresas optantes pelo simples (sim e não);
-- OK;OK;Filtro de empresas optantes pelo simei (sim e não);
-- OK;OK;Empresas por nível e atividade;
-- OK;OK;Empresas por data de abertura;
-- OK;OK;Empresas por Ramos de Atividade (do arquivo Setores e Ramos de Atividade);
-- OK;OK;Empresas por CNAE Principal (tabela, onde CNAE principal tem número de ordem = 0)
+## Requisitos do Teste
+
+Requisitos  | Qlik | Power BI
+----------- | ---- | ----
+Total Geral de empresas|OK|OK
+Total de empresas matrizes|OK|OK
+Total de empresas filiais|OK|OK
+Total de empresas optantes pelo simples e simei|OK|OK
+Total de empresas públicas|OK|OK
+Total de empresas privadas|OK|OK
+Total de empresas ativas|OK|OK
+Total de empresas baixadas|OK|OK
+Total de empresas mistas|OK|OK
+Empresas por UF -> Município (Drilldown)|OK|OK
+Empresas em um gráfico de mapa|OK|OK
+Empresas por faixa de veículos (leves + pesados) -> 0 a 5, 6 a 10, 11 a 15, 16 a 30, 31 a 50, > 50|OK|OK
+Filtro de empresas com veículos registrados na antt|OK|OK
+Filtro de empresas optantes pelo simples (sim e não)|OK|OK
+Filtro de empresas optantes pelo simei (sim e não)|OK|OK
+Empresas por nível e atividade|OK|OK
+Empresas por data de abertura|OK|OK
+Empresas por Ramos de Atividade (do arquivo Setores e Ramos de Atividade)|OK|OK
+Empresas por CNAE Principal (tabela, onde CNAE principal tem número de ordem = 0)|OK|OK
 
 
 Teste de Aptidão para a vaga de Analista de Business Intelligence
@@ -131,6 +135,4 @@ Para a View, precisamos das seguintes análises:
 - É recomendada a utilização do Qlik para toda a etapa de ETL, onde os scripts são salvos em arquivos com a extensão .qvs e nos qvws é aplicado o include destes scripts;
 - Uma dica para a view em Qlik é dar um binary no arquivo criado na pasta dataCloud;
 - Este mesmo arquivo que será criado em dataCloud, poderá realizar os stores das dims, fatos ou linktables em storage_pbi, onde o Power BI consumirá os dados de lá;
-- Para que fosse possível subir toda a estrutura de diretórios no Git, foi necessário criar um arquivo file.txt. Pedimos por gentileza que ignorem ou excluam estes arquivos ;)
-
-### Aos cadidatos, tenham um ótimo teste :D ### 
+- Para que fosse possível subir toda a estrutura de diretórios no Git, foi necessário criar um arquivo file.txt. Pedimos por gentileza que ignorem ou excluam estes arquivos 
