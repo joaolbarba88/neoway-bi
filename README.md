@@ -26,7 +26,7 @@ Empresas por Ramos de Atividade (do arquivo Setores e Ramos de Atividade)|OK|OK
 Empresas por CNAE Principal (tabela, onde CNAE principal tem número de ordem = 0)|OK|OK
 
 
-Teste de Aptidão para a vaga de Analista de Business Intelligence
+#Descrição do Teste
 ===
 
 ## Sumário
