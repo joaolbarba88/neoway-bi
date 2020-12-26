@@ -5,25 +5,25 @@ Teste de conhecimentos em Business Intelligence realizado pela Neoway.
 
 Requisitos  | Qlik       | Power BI
 ----------- | ---------- | ----------
-Total Geral de empresas|OK|OK
-Total de empresas matrizes|OK|OK
-Total de empresas filiais|OK|OK
-Total de empresas optantes pelo simples e simei|OK|OK
-Total de empresas públicas|OK|OK
-Total de empresas privadas|OK|OK
-Total de empresas ativas|OK|OK
-Total de empresas baixadas|OK|OK
-Total de empresas mistas|OK|OK
-Empresas por UF -> Município (Drilldown)|OK|OK
-Empresas em um gráfico de mapa|OK|OK
-Empresas por faixa de veículos (leves + pesados) -> 0 a 5, 6 a 10, 11 a 15, 16 a 30, 31 a 50, > 50|OK|OK
-Filtro de empresas com veículos registrados na antt|OK|OK
-Filtro de empresas optantes pelo simples (sim e não)|OK|OK
-Filtro de empresas optantes pelo simei (sim e não)|OK|OK
-Empresas por nível e atividade|OK|OK
-Empresas por data de abertura|OK|OK
-Empresas por Ramos de Atividade (do arquivo Setores e Ramos de Atividade)|OK|OK
-Empresas por CNAE Principal (tabela, onde CNAE principal tem número de ordem = 0)|OK|OK
+Total Geral de empresas|Atendido|Atendido
+Total de empresas matrizes|Atendido|Atendido
+Total de empresas filiais|Atendido|Atendido
+Total de empresas optantes pelo simples e simei|Atendido|Atendido
+Total de empresas públicas|Atendido|Atendido
+Total de empresas privadas|Atendido|Atendido
+Total de empresas ativas|Atendido|Atendido
+Total de empresas baixadas|Atendido|Atendido
+Total de empresas mistas|Atendido|Atendido
+Empresas por UF -> Município (Drilldown)|Atendido|Atendido
+Empresas em um gráfico de mapa|Atendido|Atendido
+Empresas por faixa de veículos (leves + pesados) -> 0 a 5, 6 a 10, 11 a 15, 16 a 30, 31 a 50, > 50|Atendido|Atendido
+Filtro de empresas com veículos registrados na antt|Atendido|Atendido
+Filtro de empresas optantes pelo simples (sim e não)|Atendido|Atendido
+Filtro de empresas optantes pelo simei (sim e não)|Atendido|Atendido
+Empresas por nível e atividade|Atendido|Atendido
+Empresas por data de abertura|Atendido|Atendido
+Empresas por Ramos de Atividade (do arquivo Setores e Ramos de Atividade)|Atendido|Atendido
+Empresas por CNAE Principal (tabela, onde CNAE principal tem número de ordem = 0)|Atendido|Atendido
 
 
 # Descrição do Teste
