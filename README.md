@@ -35,18 +35,16 @@ Empresas por CNAE Principal (tabela, onde CNAE principal tem número de ordem = 
 - [Sobre o Teste](#sobre-o-teste)
 - [Observações](#observações)
 
-A Neoway está com uma vaga para Analista de BI para atuar em Floripa.
 A equipe de BI da Neoway trabalha na construção de aplicações de Business Intelligence para clientes de maior relevância no mercado nacional e internacional.
 São utilizadas as ferramentas de BI (QlikView, Power BI) para a apresentação das views, porém, praticamente todo o processo de ETL é feito com QlikView, ficando alguns jobs a cargo do Pentaho.
 Além disto, estamos trabalhando também com o desenvolvimento de soluções utilizando tecnologias web para oferecer dados via APIs e WebApps. Por isso, o candidato que tiver em seus skills o domínio de javascript, nodejs, angular, html5 e css3 terá um plus em seu processo de triagem.
 
 ## Observações Gerais
 
-O candidato terá que acessar este repositório, clonar a estrutura do projeto, para então realizar a construção do mesmo em sua máquina local.
-Ao término do teste o candidato terá que subir o projeto em seu perfil no github e enviar o link para raphael.pacheco@neoway.com.br.
-O candidato terá 3 dias para realizar o teste, contandos a partir do contato com nosso RH. 
+Será necessário acessar este repositório, clonar a estrutura do projeto, para então realizar a construção do mesmo em sua máquina local.
+Ao término do teste o candidato terá que subir o projeto em seu perfil no github e enviar o link para ************@neoway.com.br.
 
-Serão analisados 4 pontos para avaliar a aptidão do candidato a vaga
+Serão analisados 4 pontos para avaliar a aptidão:
 - A capacidade do candidato na captura dos dados em diferentes fontes;
 - Manipulação dos dados;
 - Percepção de qual o melhor tipo de modelagem para o problema proposto;
